@@ -16,8 +16,8 @@ pipeline {
    stage ("Check-git-Secrets"){
     steps {
       sh 'rm trufflehog || true'
-      sh 'apt update'
-      sh 'apt install python3-pip'
+      sh 'sudo apt update'
+      sh 'sudo apt install python3-pip'
       sh 'pip install truffleHog'
       sh 'truffleHog --regex --entropy=False https://github.com/AnujNautiyal1956/webapp.git'
       sh 'cat trufflehog'
