@@ -27,7 +27,6 @@ pipeline {
       sh 'wget https://raw.githubusercontent.com/AnujNautiyal1956/webapp/master/owasp-dependency-check.sh'
       sh 'chmod +x owasp-dependency-check.sh'
       sh 'bash owasp-dependency-check.sh'
-      sh 'cat /var/lib/jenkins/workspace/Webapp-SecDevOps-CICD/OWASP-dependecy-check/report/dependency-check-report.xml || true'
    }
    }
    stage ("Build"){
