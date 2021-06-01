@@ -43,7 +43,7 @@ pipeline {
       sh 'mvn clean package'
    }
    } 
-   stage ("Deply to Tomcat"){
+   stage ("Deploy to Tomcat"){
     steps {
       sshagent(['tomcat']){
         sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@54.155.87.154:/home/ubuntu/prod/apache-tomcat-8.5.66/webapps/webapp.war'
@@ -54,7 +54,7 @@ pipeline {
    stage ("DAST"){
     steps {
       sshagent(['zap']){
-        sh 'ssh -o StrictHostKeyChecking=no ubuntu@34.253.49.109 "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://54.155.87.154:8080/webapp/" || true'
+        sh 'ssh -o StrictHostKeyChecking=no ubuntu@34.244.178.196 "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://54.155.87.154:8080/webapp/" || true'
        }
     }
    }
